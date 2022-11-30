@@ -1,6 +1,12 @@
+import os
+import sys
+import datetime
+from sqlalchemy import Table, Column, ForeignKey, Integer, String, DateTime
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship, backref
 
 db = SQLAlchemy()
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)

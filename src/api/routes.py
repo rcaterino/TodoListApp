@@ -8,6 +8,14 @@ from api.utils import generate_sitemap, APIException
 api = Blueprint('api', __name__)
 
 
+# get all the people
+@api.route('/users', methods=['GET'])
+def getUsers():
+    people_query = User.query.all()
+    all_people= list(map(lambda x: x.serialize(), people_query))
+    return jsonify(all_people), 200
+
+
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
